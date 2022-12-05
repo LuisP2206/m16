@@ -341,20 +341,5 @@ namespace DAL
 				ConString.con.Close();
 			}
 		}
-
-		private static string ImageToBase64(Image image)
-		{
-			using (MemoryStream ms = new MemoryStream())
-			{
-				image.Save(ms, image.RawFormat);
-				return Convert.ToBase64String(ms.ToArray());
-			}
-		}
-
-		private static Image Base64ToImage(string base64)
-		{
-			byte[] imageBytes = Convert.FromBase64String(base64);
-			return new Bitmap(new MemoryStream(imageBytes));
-		}
 	}
 }

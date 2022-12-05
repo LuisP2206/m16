@@ -61,7 +61,23 @@ namespace M16_68
 
 		private void btn_add_Click(object sender, EventArgs e)
 		{
+            string imagemBase64 = ImageToBase64(pictureBox1.Image);
+            // guardar na bd num campo de texto com tamanho de mais ou menos 10-20 milhoes de caracteres (long text)
+		}
 
+		private static string ImageToBase64(Image image)
+		{
+			using (MemoryStream ms = new MemoryStream())
+			{
+				image.Save(ms, image.RawFormat);
+				return Convert.ToBase64String(ms.ToArray());
+			}
+		}
+
+		private static Image Base64ToImage(string base64)
+		{
+			byte[] imageBytes = Convert.FromBase64String(base64);
+			return new Bitmap(new MemoryStream(imageBytes));
 		}
 	}
 }
