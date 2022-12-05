@@ -31,7 +31,7 @@ namespace M16_68
 
         private void btn_browse_Click(object sender, EventArgs e)
         {
-            /*Stream myStream;
+            Stream myStream;
             var fd = new SaveFileDialog();
             fd.Filter = "Bmp(*.BMP;)|*.BMP;| Jpg(*Jpg)|*.jpg| Png(*.Png;)|*.Png";
             fd.AddExtension = true;
@@ -56,7 +56,12 @@ namespace M16_68
                     // Code to write the stream goes here.
                     myStream.Close();
                 }
-            }*/
+            }
         }
-    }
+
+		private void btn_add_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
