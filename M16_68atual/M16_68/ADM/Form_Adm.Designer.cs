@@ -39,11 +39,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.suasMoedasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.suasMoedasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarMoedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,17 +139,10 @@
             // suasMoedasToolStripMenuItem
             // 
             this.suasMoedasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.suasMoedasToolStripMenuItem1,
             this.adicionarToolStripMenuItem});
             this.suasMoedasToolStripMenuItem.Name = "suasMoedasToolStripMenuItem";
             this.suasMoedasToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.suasMoedasToolStripMenuItem.Text = "Gestão";
-            // 
-            // suasMoedasToolStripMenuItem1
-            // 
-            this.suasMoedasToolStripMenuItem1.Name = "suasMoedasToolStripMenuItem1";
-            this.suasMoedasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.suasMoedasToolStripMenuItem1.Text = "Acessos";
             // 
             // adicionarToolStripMenuItem
             // 
@@ -167,18 +159,18 @@
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
-            // logOffToolStripMenuItem
-            // 
-            this.logOffToolStripMenuItem.Name = "logOffToolStripMenuItem";
-            this.logOffToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.logOffToolStripMenuItem.Text = "Log off";
-            // 
             // adicionarMoedaToolStripMenuItem
             // 
             this.adicionarMoedaToolStripMenuItem.Name = "adicionarMoedaToolStripMenuItem";
             this.adicionarMoedaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.adicionarMoedaToolStripMenuItem.Text = "Adicionar Moeda";
             this.adicionarMoedaToolStripMenuItem.Click += new System.EventHandler(this.adicionarMoedaToolStripMenuItem_Click);
+            // 
+            // logOffToolStripMenuItem
+            // 
+            this.logOffToolStripMenuItem.Name = "logOffToolStripMenuItem";
+            this.logOffToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOffToolStripMenuItem.Text = "Log off";
             // 
             // Form_Adm
             // 
@@ -217,7 +209,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem suasMoedasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem suasMoedasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem adicionarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOffToolStripMenuItem;

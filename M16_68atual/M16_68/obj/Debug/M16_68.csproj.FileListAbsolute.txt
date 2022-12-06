@@ -60,3 +60,25 @@ E:\M16_68atual\M16_68\bin\Debug\M16_68.exe
 E:\M16_68atual\M16_68\bin\Debug\M16_68.pdb
 E:\M16_68atual\M16_68\bin\Debug\ClassLibrary1.dll
 E:\M16_68atual\M16_68\bin\Debug\ClassLibrary1.pdb
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\bin\Debug\M16_68.exe.config
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\bin\Debug\M16_68.exe
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\bin\Debug\M16_68.pdb
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\bin\Debug\ClassLibrary1.dll
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\bin\Debug\ClassLibrary1.pdb
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.csproj.AssemblyReference.cache
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_Add.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_Adm.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_CColecao.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_CEventos.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_CMoedas.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_AddMo.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_Colec.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_MinhaC.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_Consulta.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_Login.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Form_Register.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.Properties.Resources.resources
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.csproj.GenerateResource.cache
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.csproj.CoreCompileInputs.cache
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.exe
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.pdb

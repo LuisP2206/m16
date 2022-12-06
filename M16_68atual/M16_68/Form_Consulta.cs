@@ -21,7 +21,43 @@ namespace M16_68
 
         private void Form_Consulta_Load(object sender, EventArgs e)
         {
+            ObE Eventos;
+            string eventos;
+            try
+            {
+                Eventos = new ObE();
+                eventos = Eventos.Eventos(cbC_eventos.Text);
+                //eventos.Eventos(cbC_eventos.Text);
+                cbC_eventos.Text = eventos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
+
+            /*ConString.con.Open(); 
+            SqlCommand CE = new SqlCommand("Select Nome from Evento", ConString.con);
+            SqlDataAdapter da = new SqlDataAdapter(CE);
+            DataSet ds = new DataSet();
+            //string[] item = new string[1];
+            da.Fill(ds);
+            cbC_eventos.Text = ds.Tables[0].Columns["Nome"].ToString();
+
+            SqlCommand CM = new SqlCommand("Select * from Moeda", ConString.con);
+            SqlDataAdapter da1 = new SqlDataAdapter(CM);
+            DataSet ds1 = new DataSet();
+            //string[] item1 = new string[1];
+            da.Fill(ds1);
+            cbC_eventos.Text = ds.Tables[0].Columns["Nome"].ToString();
+
+            SqlCommand CC = new SqlCommand("Select * from Colecoes", ConString.con);
+            SqlDataAdapter da2 = new SqlDataAdapter(CC);
+            DataSet ds2 = new DataSet();
+            //string[] item2 = new string[1];
+            da.Fill(ds2);
+            cbC_eventos.Text = ds.Tables[0].Columns["Nome"].ToString();
+            ConString.con.Close();*/
         }
 
         private void btnC_eventos_Click(object sender, EventArgs e)

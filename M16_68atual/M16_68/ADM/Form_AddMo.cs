@@ -53,7 +53,8 @@ namespace M16_68
                 }
                 if ((myStream = fd.OpenFile()) != null)
                 {
-                    // Code to write the stream goes here.
+                    string imagemBase64 = ImageToBase64(pictureBox1.Image);
+                    // guardar na bd num campo de texto com tamanho de mais ou menos 10-20 milhoes de caracteres (long text)
                     myStream.Close();
                 }
             }
@@ -61,8 +62,7 @@ namespace M16_68
 
 		private void btn_add_Click(object sender, EventArgs e)
 		{
-            string imagemBase64 = ImageToBase64(pictureBox1.Image);
-            // guardar na bd num campo de texto com tamanho de mais ou menos 10-20 milhoes de caracteres (long text)
+            
 		}
 
 		private static string ImageToBase64(Image image)

@@ -33,14 +33,12 @@
             this.cb_moedas = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
-            this.txt_qtd = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(439, 136);
+            this.btn_back.Location = new System.Drawing.Point(212, 128);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(75, 23);
             this.btn_back.TabIndex = 5;
@@ -67,29 +65,13 @@
             // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(439, 107);
+            this.btn_add.Location = new System.Drawing.Point(212, 99);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 23);
             this.btn_add.TabIndex = 8;
             this.btn_add.Text = "Adicionar";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // txt_qtd
-            // 
-            this.txt_qtd.Location = new System.Drawing.Point(12, 98);
-            this.txt_qtd.Name = "txt_qtd";
-            this.txt_qtd.Size = new System.Drawing.Size(100, 20);
-            this.txt_qtd.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Quantidade";
             // 
             // imageList1
             // 
@@ -101,9 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 171);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_qtd);
+            this.ClientSize = new System.Drawing.Size(302, 171);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_moedas);
@@ -120,8 +100,6 @@
         private System.Windows.Forms.ComboBox cb_moedas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.TextBox txt_qtd;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ImageList imageList1;
     }
 }

@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADM\Form_acessos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ADM\Form_acessos.Designer.cs">
-      <DependentUpon>Form_acessos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,12 +81,6 @@
     </Compile>
     <Compile Include="ADM\Form_AddMo.Designer.cs">
       <DependentUpon>Form_AddMo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ADM\Form_Colec.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ADM\Form_Colec.Designer.cs">
-      <DependentUpon>Form_Colec.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_MinhaC.cs">
       <SubType>Form</SubType>
@@ -137,9 +125,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ADM\Form_AddMo.resx">
       <DependentUpon>Form_AddMo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ADM\Form_Colec.resx">
-      <DependentUpon>Form_Colec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_MinhaC.resx">
       <DependentUpon>Form_MinhaC.cs</DependentUpon>

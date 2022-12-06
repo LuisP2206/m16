@@ -6,13 +6,14 @@ using System.IO;
 
 namespace DAL
 {
+	
 	public class ConString
 	{
 		public static SqlConnection con;
 
 		static ConString()
 		{
-			con = new SqlConnection(@"server=.\SQLEXPRESS;Database=p40_68;Trusted_Connection=True;");
+			con = new SqlConnection(@"server=.\SQLEXPRESS;Database=p40_68;Trusted_Connection=True;");/*Trusted_Connection=Trueuid=sa;pass=SQLEXPRESS_*/
 		}
 	}
 	public class Proc
@@ -143,9 +144,11 @@ namespace DAL
 				SqlDataReader reader1 = getE.ExecuteReader();
 				while (reader1.Read())
 				{
-					reader1.GetValue(0).ToString();
+					eventos = reader1.GetValue(0).ToString();
+					
 				}
 				return eventos;
+
 			}
 			catch (Exception ex)
 			{
@@ -289,13 +292,12 @@ namespace DAL
 			}
 		}
 
-		public static bool InserirMoeda(Image imagem)
+		/*public static bool InserirMoeda(Image imagem)
 		{
 			ConString.con.Open();
 			try
 			{
 				SqlCommand add = new SqlCommand(@"Insert into Moeda(Imagem) values(@imagem)", ConString.con);
-				// TODO: adicionar os outros campos
 				add.Parameters.AddWithValue("imagem", ImageToBase64(imagem));
 				add.ExecuteNonQuery();
 				return true;
@@ -340,6 +342,6 @@ namespace DAL
 			{
 				ConString.con.Close();
 			}
-		}
+		}*/
 	}
 }

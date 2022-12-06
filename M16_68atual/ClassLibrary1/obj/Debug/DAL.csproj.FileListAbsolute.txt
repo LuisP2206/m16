@@ -14,3 +14,7 @@ E:\M16_68atual\ClassLibrary1\obj\Debug\DAL.csproj.AssemblyReference.cache
 E:\M16_68atual\ClassLibrary1\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 E:\M16_68atual\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 E:\M16_68atual\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\ClassLibrary1\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\ClassLibrary1\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
