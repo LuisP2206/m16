@@ -13,8 +13,16 @@ namespace M16_68
 {
     public partial class Form_CEventos : Form
     {
+        private static Form_CEventos Instance;
+
+        public static Form_CEventos GetInstance()
+        {
+            return Instance ?? new Form_CEventos();
+        }
+
         public Form_CEventos()
         {
+            Instance = this;
             InitializeComponent();
         }
 

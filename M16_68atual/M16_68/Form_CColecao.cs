@@ -1,25 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace M16_68
 {
-    public partial class Form_CColecao : Form
-    {
-        public Form_CColecao()
-        {
-            InitializeComponent();
-        }
+	public partial class Form_CColecao : Form
+	{
+		private static Form_CColecao Instance;
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+		public static Form_CColecao GetInstance()
+		{
+			return Instance ?? new Form_CColecao();
+		}
 
-        }
-    }
+		public Form_CColecao()
+		{
+			Instance = this;
+			InitializeComponent();
+		}
+
+		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

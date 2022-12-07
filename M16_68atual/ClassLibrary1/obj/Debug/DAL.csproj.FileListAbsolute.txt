@@ -18,3 +18,24 @@ C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\ClassLibrary1\
 C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\ClassLibrary1\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\bd.mdf
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\bd_log.ldf
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\DAL.dll.config
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\DAL.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\DAL.pdb
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\obj\Debug\DAL.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\obj\Debug\DAL.pdb
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\x86\sqlite3.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\x64\sqlite3.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\DBMoedas.db
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\EntityFramework.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\System.Data.SQLite.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\EntityFramework.xml
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\bin\Debug\System.Data.SQLite.xml
+C:\Milkenm\Projects\m16\M16_68atual\ClassLibrary1\obj\Debug\DAL.csproj.CopyComplete
