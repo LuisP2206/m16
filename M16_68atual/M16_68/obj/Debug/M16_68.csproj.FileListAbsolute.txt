@@ -82,3 +82,26 @@ C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Deb
 C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.csproj.CoreCompileInputs.cache
 C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.exe
 C:\Users\lorde\OneDrive\Ambiente de Trabalho\m16-main\M16_68atual\M16_68\obj\Debug\M16_68.pdb
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\bin\Debug\M16_68.exe.config
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\bin\Debug\M16_68.exe
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\bin\Debug\M16_68.pdb
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\bin\Debug\ClassLibrary1.dll
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\bin\Debug\ClassLibrary1.pdb
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.csproj.AssemblyReference.cache
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.csproj.SuggestedBindingRedirects.cache
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_Add.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_Adm.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_CColecao.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_CEventos.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_CMoedas.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_AddMo.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_MinhaC.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_Consulta.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_Login.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Form_Register.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.Properties.Resources.resources
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.csproj.GenerateResource.cache
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.csproj.CoreCompileInputs.cache
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.csproj.CopyComplete
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.exe
+C:\Milkenm\Projects\m16\M16_68atual\M16_68\obj\Debug\M16_68.pdb

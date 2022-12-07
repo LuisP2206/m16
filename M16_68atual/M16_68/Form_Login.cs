@@ -1,74 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using DAL;
-using System.Data.SqlClient;
 
 namespace M16_68
 {
-    public partial class Form_Login : Form
-    {
-        public Form_Login()
-        {
-            InitializeComponent();
-        }
+	public partial class Form_Login : Form
+	{
+		private static Form_Login Instance;
 
-        private void cb_pass_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_pass.Checked == true)
-                txt_pass.UseSystemPasswordChar = false;
-            else
-                txt_pass.UseSystemPasswordChar = true;
-        }
+		public static Form_Login GetInstace()
+		{
+			return Instance ?? new Form_Login();
+		}
 
-        private void btn_login_Click(object sender, EventArgs e)
-        {
-            Proc login;
-            string tipo;
-            try
-            {
-                login = new Proc();
-                tipo = login.login(txt_user.Text, txt_pass.Text);
-                if (tipo != "Erro" && tipo != "loginfailed")
-                {
-                    if (tipo == "Colec")
-                    {
-                        Form_Consulta Cons = new Form_Consulta();               
-                        this.Hide();
-                        Cons.ShowDialog();
-                        this.Show();
-                        SqlCommand add = new SqlCommand(@"Insert into Acessos(Hora_inic,Observacoes) values())", ConString.con);
-                    }
-                    else
-                    {
-                        if (tipo == "adm")
-                        {
-                            Form_Adm Adm = new Form_Adm();
-                            this.Hide();
-                            Adm.ShowDialog();
-                            this.Show();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+		public Form_Login()
+		{
+			Instance = this;
+			InitializeComponent();
+		}
 
-        private void btn_register_Click(object sender, EventArgs e)
-        {
-            Form_Register Reg = new Form_Register();
-            this.Hide();
-            Reg.ShowDialog();
-            this.Show();
-        }
-    }
+		private void cb_pass_CheckedChanged(object sender, EventArgs e)
+		{
+			txt_pass.UseSystemPasswordChar = !cb_pass.Checked;
+		}
+
+		private void btn_login_Click(object sender, EventArgs e)
+		{
+
+			Tuple<CommandResult, AccountType?> result = Database.GetInstance().Login(txt_user.Text, txt_pass.Text);
+			if (result.Item1 == CommandResult.Error)
+			{
+				MessageBox.Show("Ocorreu um problema no login.");
+				return;
+			}
+			else if (result.Item1 == CommandResult.Failed)
+			{
+				MessageBox.Show("Dados de login incorretos.");
+				return;
+			}
+
+			if (result.Item2 == AccountType.User)
+			{
+				Form_Consulta.GetInstance().Show();
+				Hide();
+			}
+			else
+			{
+				Form_Adm Adm = new Form_Adm();
+				Hide();
+			}
+		}
+
+		private void btn_register_Click(object sender, EventArgs e)
+		{
+			Form_Register Reg = new Form_Register();
+			Reg.Show();
+		}
+	}
 }
