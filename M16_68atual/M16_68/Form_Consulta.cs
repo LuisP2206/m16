@@ -21,14 +21,14 @@ namespace M16_68
 
 		private void Form_Consulta_Load(object sender, EventArgs e)
 		{
-			ObE Eventos;
+			/*ObE Eventos;*/
 			string eventos;
 			try
 			{
-				Eventos = new ObE();
-				eventos = Eventos.Eventos(cbC_eventos.Text);
+				/*Eventos = new ObE();*/
+				/*eventos = Eventos.Eventos(cbC_eventos.Text);*/
 				//eventos.Eventos(cbC_eventos.Text);
-				cbC_eventos.Text = eventos;
+				/*cbC_eventos.Text = eventos;*/
 			}
 			catch (Exception ex)
 			{
@@ -81,7 +81,7 @@ namespace M16_68
 		private void logOffToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Close();
-			SqlCommand add = new SqlCommand(@"Insert into Acessos(Hora_fim,Observacoes) values())", ConString.con);
+			/*SqlCommand add = new SqlCommand(@"Insert into Acessos(Hora_fim,Observacoes) values())", ConString.con);*/
 		}
 
 		private void suasMoedasToolStripMenuItem1_Click(object sender, EventArgs e)

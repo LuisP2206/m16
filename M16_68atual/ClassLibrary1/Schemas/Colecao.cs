@@ -16,6 +16,7 @@
 		{
 			Nome = nome;
 			IdEvento = idEvento;
+			DataCriacao = Utils.GetCurrentUnix();
 		}
 
 		public int Id { get; set; }
