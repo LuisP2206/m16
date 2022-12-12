@@ -39,10 +39,14 @@ namespace DAL
 
 		~Database()
 		{
-			if (Connection.State == ConnectionState.Open)
+			try
 			{
-				Connection.Close();
+				if (Connection.State == ConnectionState.Open)
+				{
+					Connection.Close();
+				}
 			}
+			catch { }
 		}
 
 		private readonly string ConnectionString;
@@ -77,7 +81,7 @@ namespace DAL
 					string tipoConta = Convert.ToString(row["TipoConta"]);
 					Console.WriteLine("Tipo conta: " + tipoConta);
 
-					Enum.TryParse(tipoConta, out AccountType accountType);
+					Enum.TryParse(Utils.Capitalize(tipoConta), out AccountType accountType);
 
 					return new Tuple<CommandResult, AccountType?>(CommandResult.Success, accountType);
 				}
@@ -115,6 +119,37 @@ namespace DAL
 			}
 		}
 
+		public Tuple<CommandResult, List<Evento>> SelecionarEventos()
+		{
+			try
+			{
+				using (SQLiteCommand command = new SQLiteCommand($"SELECT ID FROM Eventos", GetConnection()))
+				using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+				{
+					DataTable dataTable = new DataTable();
+					adapter.Fill(dataTable);
+
+					List<Evento> eventos = new List<Evento>();
+					foreach (DataRow row in dataTable.Rows)
+					{
+						int id = Convert.ToInt32(row["ID"]);
+						var resultEvento = SelecionarEvento(id);
+						if (resultEvento.Item1 != CommandResult.Success)
+						{
+							return new Tuple<CommandResult, List<Evento>>(CommandResult.Error, null);
+						}
+						eventos.Add(resultEvento.Item2);
+					}
+
+					return new Tuple<CommandResult, List<Evento>>(CommandResult.Success, eventos);
+				}
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<Evento>>(CommandResult.Error, null);
+			}
+		}
+
 		public Tuple<CommandResult, Evento> SelecionarEvento(int id)
 		{
 			try
@@ -148,20 +183,22 @@ namespace DAL
 			try
 			{
 				List<Colecao> colecoes = new List<Colecao>();
-				using (SQLiteCommand command = new SQLiteCommand($"SELECT * FROM Colecoes", GetConnection()))
+				using (SQLiteCommand command = new SQLiteCommand($"SELECT ID FROM Colecoes", GetConnection()))
 				using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
 				{
 					DataTable dataTable = new DataTable();
 					adapter.Fill(dataTable);
-					DataRow row = dataTable.Rows[0];
 
-					int id = Convert.ToInt32(row["ID"]);
-					string nome = Convert.ToString(row["Nome"]);
-					long dataCriacao = Convert.ToInt64(row["DataCriacao"]);
-					int idEvento = Convert.ToInt32(row["IdEvento"]);
-
-					Colecao colecao = new Colecao(id, nome, dataCriacao, idEvento);
-					colecoes.Add(colecao);
+					foreach (DataRow row in dataTable.Rows)
+					{
+						int id = Convert.ToInt32(row["ID"]);
+						Tuple<CommandResult, Colecao> resultColecao = SelecionarColecao(id);
+						if (resultColecao.Item1 != CommandResult.Success)
+						{
+							return new Tuple<CommandResult, List<Colecao>>(CommandResult.Error, null);
+						}
+						colecoes.Add(resultColecao.Item2);
+					}
 				}
 				return new Tuple<CommandResult, List<Colecao>>(CommandResult.Success, colecoes);
 			}
@@ -226,6 +263,36 @@ namespace DAL
 			catch
 			{
 				return new Tuple<CommandResult, List<Colecao>>(CommandResult.Error, null);
+			}
+		}
+
+		public Tuple<CommandResult, List<Moeda>> SelecionarMoedas()
+		{
+			try
+			{
+				List<Moeda> moedas = new List<Moeda>();
+				using (SQLiteCommand command = new SQLiteCommand($"SELECT ID FROM Moedas", GetConnection()))
+				using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+				{
+					DataTable dataTable = new DataTable();
+					adapter.Fill(dataTable);
+
+					foreach (DataRow row in dataTable.Rows)
+					{
+						int id = Convert.ToInt32(row["ID"]);
+						Tuple<CommandResult, Moeda> resultMoeda = SelecionarMoeda(id);
+						if (resultMoeda.Item1 != CommandResult.Success)
+						{
+							return new Tuple<CommandResult, List<Moeda>>(CommandResult.Error, null);
+						}
+						moedas.Add(resultMoeda.Item2);
+					}
+				}
+				return new Tuple<CommandResult, List<Moeda>>(CommandResult.Success, moedas);
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<Moeda>>(CommandResult.Error, null);
 			}
 		}
 
@@ -394,39 +461,6 @@ namespace DAL
 			catch
 			{
 				return CommandResult.Error;
-			}
-		}
-
-		public Tuple<CommandResult, List<Evento>> SelecionarEventos()
-		{
-			try
-			{
-				using (SQLiteCommand command = new SQLiteCommand($"SELECT * FROM Eventos", GetConnection()))
-				using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
-				{
-					DataTable dataTable = new DataTable();
-					adapter.Fill(dataTable);
-
-					List<Evento> eventos = new List<Evento>();
-					foreach (DataRow row in dataTable.Rows)
-					{
-						int id = Convert.ToInt32(row["ID"]);
-						string nome = Convert.ToString(row["Nome"]);
-						long dataInicio = Convert.ToInt32(row["DataInicio"]);
-						long dataFim = Convert.ToInt32(row["DataFim"]);
-						string local = Convert.ToString(row["Local"]);
-						string descricao = Convert.ToString(row["Descricao"]);
-
-						Evento evento = new Evento(id, nome, dataInicio, dataFim, local, descricao);
-						eventos.Add(evento);
-					}
-
-					return new Tuple<CommandResult, List<Evento>>(CommandResult.Success, eventos);
-				}
-			}
-			catch
-			{
-				return new Tuple<CommandResult, List<Evento>>(CommandResult.Error, null);
 			}
 		}
 

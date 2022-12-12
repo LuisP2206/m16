@@ -213,6 +213,7 @@
 			this.Controls.Add(this.txt_nome);
 			this.Controls.Add(this.label1);
 			this.Name = "Form_CMoedas";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Consulta Moedas";
 			this.ResumeLayout(false);
 			this.PerformLayout();

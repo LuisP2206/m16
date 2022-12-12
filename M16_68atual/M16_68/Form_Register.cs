@@ -10,15 +10,23 @@ namespace M16_68
 	{
 		private static Form_Register Instance;
 
-		public static Form_Register GetInstance()
+		public static Form_Register GetInstance(Form previousForm)
 		{
+			PreviousForm = previousForm;
 			return Instance ?? new Form_Register();
 		}
 
-		public Form_Register()
+		private static Form PreviousForm;
+
+		private Form_Register()
 		{
 			Instance = this;
 			InitializeComponent();
+			FormClosing += new FormClosingEventHandler((s, e) =>
+			{
+				PreviousForm?.Show();
+				Instance = null;
+			});
 		}
 
 		private void cb_pass_CheckedChanged(object sender, EventArgs e)
@@ -29,7 +37,7 @@ namespace M16_68
 		private void btn_back_Click(object sender, EventArgs e)
 		{
 			Close();
-			Form_Login.GetInstace().Show();
+			Form_Login.GetInstace(this).Show();
 		}
 
 		private void btn_regis_Click(object sender, EventArgs e)

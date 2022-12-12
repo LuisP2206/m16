@@ -79,14 +79,14 @@
 			// suasMoedasToolStripMenuItem1
 			// 
 			this.suasMoedasToolStripMenuItem1.Name = "suasMoedasToolStripMenuItem1";
-			this.suasMoedasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+			this.suasMoedasToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
 			this.suasMoedasToolStripMenuItem1.Text = "Ver";
 			this.suasMoedasToolStripMenuItem1.Click += new System.EventHandler(this.suasMoedasToolStripMenuItem1_Click);
 			// 
 			// adicionarToolStripMenuItem
 			// 
 			this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
-			this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
 			this.adicionarToolStripMenuItem.Text = "Adicionar";
 			this.adicionarToolStripMenuItem.Click += new System.EventHandler(this.adicionarToolStripMenuItem_Click);
 			// 
@@ -101,7 +101,7 @@
 			// logOffToolStripMenuItem
 			// 
 			this.logOffToolStripMenuItem.Name = "logOffToolStripMenuItem";
-			this.logOffToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.logOffToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
 			this.logOffToolStripMenuItem.Text = "Log off";
 			this.logOffToolStripMenuItem.Click += new System.EventHandler(this.logOffToolStripMenuItem_Click);
 			// 
@@ -194,6 +194,7 @@
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form_Consulta";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Consulta";
 			this.Load += new System.EventHandler(this.Form_Consulta_Load);
 			this.menuStrip1.ResumeLayout(false);

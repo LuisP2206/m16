@@ -42,7 +42,6 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
-			this.txt_eve = new System.Windows.Forms.TextBox();
 			this.txt_criador = new System.Windows.Forms.TextBox();
 			this.label_user = new System.Windows.Forms.Label();
 			this.btn_add = new System.Windows.Forms.Button();
@@ -54,6 +53,7 @@
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.txt_colecao = new System.Windows.Forms.TextBox();
+			this.comboBox_eventos = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -162,13 +162,6 @@
 			this.label7.TabIndex = 13;
 			this.label7.Text = "Nome";
 			// 
-			// txt_eve
-			// 
-			this.txt_eve.Location = new System.Drawing.Point(13, 296);
-			this.txt_eve.Name = "txt_eve";
-			this.txt_eve.Size = new System.Drawing.Size(156, 20);
-			this.txt_eve.TabIndex = 14;
-			// 
 			// txt_criador
 			// 
 			this.txt_criador.Location = new System.Drawing.Point(13, 335);
@@ -261,11 +254,20 @@
 			this.txt_colecao.Size = new System.Drawing.Size(156, 20);
 			this.txt_colecao.TabIndex = 27;
 			// 
+			// comboBox_eventos
+			// 
+			this.comboBox_eventos.FormattingEnabled = true;
+			this.comboBox_eventos.Location = new System.Drawing.Point(13, 295);
+			this.comboBox_eventos.Name = "comboBox_eventos";
+			this.comboBox_eventos.Size = new System.Drawing.Size(156, 21);
+			this.comboBox_eventos.TabIndex = 29;
+			// 
 			// Form_AddMo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(447, 416);
+			this.Controls.Add(this.comboBox_eventos);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.txt_colecao);
 			this.Controls.Add(this.pictureBox1);
@@ -276,7 +278,6 @@
 			this.Controls.Add(this.btn_add);
 			this.Controls.Add(this.label_user);
 			this.Controls.Add(this.txt_criador);
-			this.Controls.Add(this.txt_eve);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label5);
@@ -291,6 +292,7 @@
 			this.Controls.Add(this.txt_val);
 			this.Controls.Add(this.txt_ident);
 			this.Name = "Form_AddMo";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Adicionar Moeda";
 			this.Load += new System.EventHandler(this.Form_AddMo_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -314,7 +316,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_eve;
         private System.Windows.Forms.TextBox txt_criador;
         private System.Windows.Forms.Label label_user;
         private System.Windows.Forms.Button btn_add;
@@ -326,5 +327,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_colecao;
-    }
+		private System.Windows.Forms.ComboBox comboBox_eventos;
+	}
 }

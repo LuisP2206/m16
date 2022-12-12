@@ -11,8 +11,10 @@ namespace M16_68
 	{
 		private static Form_MinhaC Instance;
 
-		public static Form_MinhaC GetInstance(int idColecionador)
+		public static Form_MinhaC GetInstance(Form previousForm, int idColecionador)
 		{
+			PreviousForm = previousForm;
+
 			Form_MinhaC instance = Instance ?? new Form_MinhaC();
 
 			instance.CarregarColecoes(idColecionador);
@@ -20,10 +22,17 @@ namespace M16_68
 			return instance;
 		}
 
-		public Form_MinhaC()
+		private static Form PreviousForm;
+
+		private Form_MinhaC()
 		{
 			Instance = this;
 			InitializeComponent();
+			FormClosing += new FormClosingEventHandler((s, e) =>
+			{
+				PreviousForm?.Show();
+				Instance = null;
+			});
 		}
 
 		private void CarregarColecoes(int idColecionador)
@@ -32,6 +41,7 @@ namespace M16_68
 			if (resultColecoes.Item1 == CommandResult.Error)
 			{
 				MessageBox.Show("Ocorreu um problema ao carregar as coleções.");
+				Hide();
 				return;
 			}
 			foreach (Colecao colecao in resultColecoes.Item2)
@@ -47,7 +57,7 @@ namespace M16_68
 
 		private void btn_back_Click(object sender, EventArgs e)
 		{
-			Close();
+			Hide();
 		}
 
 		private void adicionarToolStripMenuItem_Click(object sender, EventArgs e)

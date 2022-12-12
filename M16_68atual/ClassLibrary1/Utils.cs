@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
@@ -46,7 +47,7 @@ namespace DAL
 			}
 		}
 
-		public static void Bind(ComboBox comboBox, object source, string displayMember, string valueMember)
+		public static void Bind(ComboBox comboBox, IList source, string displayMember, string valueMember)
 		{
 
 			using (BindingSource bindingSource = new BindingSource
@@ -58,6 +59,11 @@ namespace DAL
 				comboBox.DisplayMember = displayMember;
 				comboBox.ValueMember = valueMember;
 			}
+		}
+
+		public static string Capitalize(string text)
+		{
+			return char.ToUpper(text[0]) + text.Substring(1);
 		}
 	}
 }

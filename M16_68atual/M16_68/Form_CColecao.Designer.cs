@@ -120,6 +120,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textBox1);
 			this.Name = "Form_CColecao";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Consulta Coleção";
 			this.ResumeLayout(false);
 			this.PerformLayout();

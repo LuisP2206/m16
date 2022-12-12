@@ -9,8 +9,9 @@ namespace M16_68
 	{
 		private static Form_CMoedas Instance;
 
-		public static Form_CMoedas GetInstance(int idMoeda)
+		public static Form_CMoedas GetInstance(Form previousForm, int idMoeda)
 		{
+			PreviousForm = previousForm;
 			Form_CMoedas instance = Instance ?? new Form_CMoedas();
 
 			instance.CarregarMoeda(idMoeda);
@@ -18,10 +19,17 @@ namespace M16_68
 			return instance;
 		}
 
+		private static Form PreviousForm;
+
 		private Form_CMoedas()
 		{
 			Instance = this;
 			InitializeComponent();
+			FormClosing += new FormClosingEventHandler((s, e) =>
+			{
+				PreviousForm?.Show();
+				Instance = null;
+			});
 		}
 
 		private void CarregarMoeda(int idMoeda)
@@ -31,12 +39,14 @@ namespace M16_68
 			{
 				MessageBox.Show("Ocorreu um problema ao obter a moeda.");
 				Close();
+				return;
 			}
 			Tuple<CommandResult, DAL.Schemas.Evento> resultEvento = Database.GetInstance().SelecionarEvento(resultMoeda.Item2.IdEvento);
 			if (resultEvento.Item1 != CommandResult.Success)
 			{
 				MessageBox.Show("Ocorreu um problema ao obter o evento da moeda.");
 				Close();
+				return;
 			}
 			txt_nome.Text = resultMoeda.Item2.Nome;
 			txt_val.Text = resultMoeda.Item2.Valor.ToString();

@@ -12,15 +12,23 @@ namespace M16_68
 	{
 		private static Form_AddMo Instance;
 
-		public static Form_AddMo GetInstance()
+		public static Form_AddMo GetInstance(Form previousForm)
 		{
+			PreviousForm = previousForm;
 			return Instance ?? new Form_AddMo();
 		}
+
+		private static Form PreviousForm;
 
 		public Form_AddMo()
 		{
 			Instance = this;
 			InitializeComponent();
+			FormClosing += new FormClosingEventHandler((s, e) =>
+			{
+				PreviousForm?.Show();
+				Instance = null;
+			});
 		}
 
 		private void Form_AddMo_Load(object sender, EventArgs e)
@@ -67,14 +75,35 @@ namespace M16_68
 
 		private void btn_add_Click(object sender, EventArgs e)
 		{
+			if (!ValidarCampos())
+			{
+				MessageBox.Show("Preencha todos os campos.");
+				return;
+			}
 			string imagemBase64 = Utils.ImagemParaBase64(pictureBox1.Image);
-			// TODO: Meter o id do evento selecionado de uma combobox com todos os eventos no ultimo parametro da linha debaixo
-			Moeda moeda = new Moeda(txt_nome.Text, Convert.ToDouble(txt_val.Text), Convert.ToInt32(txt_peso.Text), txt_met.Text, Convert.ToInt32(txt_dimen.Text), Convert.ToInt64(txt_data.Text), txt_criador.Text, imagemBase64, 0);
+			Moeda moeda = new Moeda(txt_nome.Text, Convert.ToDouble(txt_val.Text), Convert.ToInt32(txt_peso.Text), txt_met.Text, Convert.ToInt32(txt_dimen.Text), Convert.ToInt64(txt_data.Text), txt_criador.Text, imagemBase64, (int)comboBox_eventos.SelectedValue);
 			CommandResult result = Database.GetInstance().RegistarMoeda(moeda);
-			if (result == CommandResult.Error)
+			if (result == CommandResult.Success)
+			{
+				MessageBox.Show("Nova moeda registada com sucesso.");
+			}
+			else
 			{
 				MessageBox.Show("Ocorreu um problema ao registar a nova moeda.");
 			}
+		}
+
+		private bool ValidarCampos()
+		{
+			return !string.IsNullOrEmpty(txt_nome.Text)
+				&& !string.IsNullOrEmpty(txt_val.Text)
+				&& !string.IsNullOrEmpty(txt_peso.Text)
+				&& !string.IsNullOrEmpty(txt_met.Text)
+				&& !string.IsNullOrEmpty(txt_dimen.Text)
+				&& !string.IsNullOrEmpty(txt_data.Text)
+				&& !string.IsNullOrEmpty(txt_criador.Text)
+				&& pictureBox1.Image != null
+				&& comboBox_eventos.SelectedIndex != 0;
 		}
 	}
 }

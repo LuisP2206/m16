@@ -9,15 +9,23 @@ namespace M16_68
 	{
 		private static Form_Login Instance;
 
-		public static Form_Login GetInstace()
+		public static Form_Login GetInstace(Form previousForm)
 		{
+			PreviousForm = previousForm;
 			return Instance ?? new Form_Login();
 		}
 
-		public Form_Login()
+		private static Form PreviousForm;
+
+		private Form_Login()
 		{
 			Instance = this;
 			InitializeComponent();
+			FormClosing += new FormClosingEventHandler((s, e) =>
+			{
+				PreviousForm?.Show();
+				Instance = null;
+			});
 		}
 
 		private void cb_pass_CheckedChanged(object sender, EventArgs e)
@@ -42,20 +50,19 @@ namespace M16_68
 
 			if (result.Item2 == AccountType.User)
 			{
-				Form_Consulta.GetInstance().Show();
+				Form_Consulta.GetInstance(this).Show();
 				Hide();
 			}
 			else
 			{
-				Form_Adm.GetInstance().Show();
+				Form_Adm.GetInstance(this).Show();
 				Hide();
 			}
 		}
 
 		private void btn_register_Click(object sender, EventArgs e)
 		{
-			Form_Register Reg = new Form_Register();
-			Reg.Show();
+			Form_Register.GetInstance(this).Show();
 		}
 	}
 }

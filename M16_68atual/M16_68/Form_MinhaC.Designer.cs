@@ -74,7 +74,7 @@
 			// adicionarToolStripMenuItem
 			// 
 			this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
-			this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
 			this.adicionarToolStripMenuItem.Text = "Adicionar";
 			this.adicionarToolStripMenuItem.Click += new System.EventHandler(this.adicionarToolStripMenuItem_Click);
 			// 
@@ -97,6 +97,7 @@
 			this.Controls.Add(this.menuStrip2);
 			this.Controls.Add(this.lv_colecao);
 			this.Name = "Form_MinhaC";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Minha coleção";
 			this.Load += new System.EventHandler(this.Form_MinhaC_Load);
 			this.menuStrip2.ResumeLayout(false);

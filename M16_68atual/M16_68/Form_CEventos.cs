@@ -10,8 +10,10 @@ namespace M16_68
 	{
 		private static Form_CEventos Instance;
 
-		public static Form_CEventos GetInstance(int idEvento)
+		public static Form_CEventos GetInstance(Form previousForm, int idEvento)
 		{
+			PreviousForm = previousForm;
+
 			Form_CEventos instance = Instance ?? new Form_CEventos();
 
 			instance.CarregarEvento(idEvento);
@@ -19,10 +21,17 @@ namespace M16_68
 			return instance;
 		}
 
+		private static Form PreviousForm;
+
 		private Form_CEventos()
 		{
 			Instance = this;
 			InitializeComponent();
+			FormClosing += new FormClosingEventHandler((s, e) =>
+			{
+				PreviousForm?.Show();
+				Instance = null;
+			});
 		}
 
 		private void CarregarEvento(int idEvento)
@@ -32,12 +41,14 @@ namespace M16_68
 			{
 				MessageBox.Show("Ocorreu um problema ao obter o evento.");
 				Close();
+				return;
 			}
 			Tuple<CommandResult, System.Collections.Generic.List<Colecao>> resultColecoesDoEvento = Database.GetInstance().SelecionarColecoesDoEvento(idEvento);
 			if (resultColecoesDoEvento.Item1 != CommandResult.Success)
 			{
 				MessageBox.Show("Ocorreu um problema ao obter as coleções do evento.");
 				Close();
+				return;
 			}
 			textBox1.Text = resultEvento.Item2.Nome;
 			txt_local.Text = resultEvento.Item2.Local;
