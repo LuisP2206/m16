@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace DAL
 {
@@ -41,7 +42,21 @@ namespace DAL
 				byte[] textBytes = System.Text.Encoding.UTF8.GetBytes(text);
 				byte[] hashBytes = sha.ComputeHash(textBytes);
 
-				return BitConverter.ToString(hashBytes).Replace("-", "");
+				return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+			}
+		}
+
+		public static void Bind(ComboBox comboBox, object source, string displayMember, string valueMember)
+		{
+
+			using (BindingSource bindingSource = new BindingSource
+			{
+				DataSource = source
+			})
+			{
+				comboBox.DataSource = bindingSource.DataSource;
+				comboBox.DisplayMember = displayMember;
+				comboBox.ValueMember = valueMember;
 			}
 		}
 	}

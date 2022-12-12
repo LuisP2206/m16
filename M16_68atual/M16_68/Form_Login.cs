@@ -47,7 +47,7 @@ namespace M16_68
 			}
 			else
 			{
-				Form_Adm Adm = new Form_Adm();
+				Form_Adm.GetInstance().Show();
 				Hide();
 			}
 		}

@@ -1,31 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace M16_68
 {
-    public partial class Form_Adm : Form
-    {
-        public Form_Adm()
-        {
-            InitializeComponent();
-        }
+	public partial class Form_Adm : Form
+	{
+		private static Form_Adm Instance;
 
-        private void btnC_eventos_Click(object sender, EventArgs e)
-        {
+		public static Form_Adm GetInstance()
+		{
+			return Instance ?? new Form_Adm();
+		}
 
-        }
+		public Form_Adm()
+		{
+			Instance = this;
+			InitializeComponent();
+		}
 
-        private void adicionarMoedaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form_AddMo admo = new Form_AddMo();
-            admo.ShowDialog();
-        }
-    }
+		private void btnC_eventos_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void adicionarMoedaToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Form_AddMo admo = new Form_AddMo();
+			admo.ShowDialog();
+		}
+	}
 }

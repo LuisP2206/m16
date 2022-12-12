@@ -11,12 +11,14 @@ namespace M16_68
 	{
 		private static Form_MinhaC Instance;
 
-		public static Form_MinhaC GetInstance()
+		public static Form_MinhaC GetInstance(int idColecionador)
 		{
-			return Instance ?? new Form_MinhaC();
-		}
+			Form_MinhaC instance = Instance ?? new Form_MinhaC();
 
-		private readonly List<Colecao> colecoes = new List<Colecao>();
+			instance.CarregarColecoes(idColecionador);
+
+			return instance;
+		}
 
 		public Form_MinhaC()
 		{
@@ -24,14 +26,23 @@ namespace M16_68
 			InitializeComponent();
 		}
 
-		private void Form_MinhaC_Load(object sender, EventArgs e)
+		private void CarregarColecoes(int idColecionador)
 		{
-			Tuple<CommandResult, List<int>> result = Database.GetInstance().SelecionarColecoesDoColecionador(LoginInfo.CurrentUserId);
-			if (result.Item1 == CommandResult.Error)
+			Tuple<CommandResult, List<Colecao>> resultColecoes = Database.GetInstance().SelecionarColecoesDoColecionador(idColecionador);
+			if (resultColecoes.Item1 == CommandResult.Error)
 			{
 				MessageBox.Show("Ocorreu um problema ao carregar as coleções.");
 				return;
 			}
+			foreach (Colecao colecao in resultColecoes.Item2)
+			{
+				lv_colecao.Items.Add(colecao.Nome);
+			}
+		}
+
+		private void Form_MinhaC_Load(object sender, EventArgs e)
+		{
+
 		}
 
 		private void btn_back_Click(object sender, EventArgs e)

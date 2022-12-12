@@ -10,8 +10,16 @@ namespace M16_68
 {
 	public partial class Form_AddMo : Form
 	{
+		private static Form_AddMo Instance;
+
+		public static Form_AddMo GetInstance()
+		{
+			return Instance ?? new Form_AddMo();
+		}
+
 		public Form_AddMo()
 		{
+			Instance = this;
 			InitializeComponent();
 		}
 

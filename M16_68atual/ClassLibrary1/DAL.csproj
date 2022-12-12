@@ -106,6 +106,8 @@
     </Compile>
     <Compile Include="Schemas\Colecao.cs" />
     <Compile Include="Schemas\Colecionador.cs" />
+    <Compile Include="Schemas\ColecionadoresMoedas.cs" />
+    <Compile Include="Schemas\MoedasColecoes.cs" />
     <Compile Include="Schemas\Evento.cs" />
     <Compile Include="Schemas\Moeda.cs" />
     <Compile Include="Utils.cs" />

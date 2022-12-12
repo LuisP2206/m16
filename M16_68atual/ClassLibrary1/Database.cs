@@ -143,6 +143,34 @@ namespace DAL
 			}
 		}
 
+		public Tuple<CommandResult, List<Colecao>> SelecionarColecoes()
+		{
+			try
+			{
+				List<Colecao> colecoes = new List<Colecao>();
+				using (SQLiteCommand command = new SQLiteCommand($"SELECT * FROM Colecoes", GetConnection()))
+				using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+				{
+					DataTable dataTable = new DataTable();
+					adapter.Fill(dataTable);
+					DataRow row = dataTable.Rows[0];
+
+					int id = Convert.ToInt32(row["ID"]);
+					string nome = Convert.ToString(row["Nome"]);
+					long dataCriacao = Convert.ToInt64(row["DataCriacao"]);
+					int idEvento = Convert.ToInt32(row["IdEvento"]);
+
+					Colecao colecao = new Colecao(id, nome, dataCriacao, idEvento);
+					colecoes.Add(colecao);
+				}
+				return new Tuple<CommandResult, List<Colecao>>(CommandResult.Success, colecoes);
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<Colecao>>(CommandResult.Error, null);
+			}
+		}
+
 		public Tuple<CommandResult, Colecao> SelecionarColecao(int id)
 		{
 			try
@@ -169,7 +197,7 @@ namespace DAL
 			}
 		}
 
-		public Tuple<CommandResult, List<int>> SelecionarColecoesDoColecionador(int idColecionador)
+		public Tuple<CommandResult, List<Colecao>> SelecionarColecoesDoColecionador(int idColecionador)
 		{
 			try
 			{
@@ -179,18 +207,25 @@ namespace DAL
 					DataTable dataTable = new DataTable();
 					adapter.Fill(dataTable);
 
-					List<int> colecoes = new List<int>();
+					List<Colecao> colecoes = new List<Colecao>();
 					foreach (DataRow row in dataTable.Rows)
 					{
-						colecoes.Add(Convert.ToInt32(row["IdColecao"]));
+						int idColecao = Convert.ToInt32(row["IdColecao"]);
+
+						Tuple<CommandResult, Colecao> result = SelecionarColecao(idColecao);
+						if (result.Item1 != CommandResult.Success)
+						{
+							throw new Exception();
+						}
+						colecoes.Add(result.Item2);
 					}
 
-					return new Tuple<CommandResult, List<int>>(CommandResult.Success, colecoes);
+					return new Tuple<CommandResult, List<Colecao>>(CommandResult.Success, colecoes);
 				}
 			}
 			catch
 			{
-				return new Tuple<CommandResult, List<int>>(CommandResult.Error, null);
+				return new Tuple<CommandResult, List<Colecao>>(CommandResult.Error, null);
 			}
 		}
 
@@ -226,6 +261,116 @@ namespace DAL
 			}
 		}
 
+		public Tuple<CommandResult, List<ColecionadoresMoedas>> SelecionarColecionadoresMoedas()
+		{
+			try
+			{
+				using (SQLiteCommand command = new SQLiteCommand($"SELECT * FROM JN_ColecionadoresMoedas", GetConnection()))
+				using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+				{
+					DataTable dataTable = new DataTable();
+					adapter.Fill(dataTable);
+
+					List<ColecionadoresMoedas> colecionadoresMoedasList = new List<ColecionadoresMoedas>();
+					foreach (DataRow row in dataTable.Rows)
+					{
+						int id = Convert.ToInt32(row["ID"]);
+						int idColecionador = Convert.ToInt32(row["IdColecionador"]);
+						int idMoeda = Convert.ToInt32(row["IdMoeda"]);
+
+						ColecionadoresMoedas colecionadoresMoedas = new ColecionadoresMoedas(id, idColecionador, idMoeda);
+						colecionadoresMoedasList.Add(colecionadoresMoedas);
+					}
+
+					return new Tuple<CommandResult, List<ColecionadoresMoedas>>(CommandResult.Success, colecionadoresMoedasList);
+				}
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<ColecionadoresMoedas>>(CommandResult.Error, null);
+			}
+		}
+
+		public Tuple<CommandResult, List<Moeda>> SelecionarMoedasDoColecionador(int idColecionador)
+		{
+			try
+			{
+				Tuple<CommandResult, List<ColecionadoresMoedas>> colecionadoresMoedas = SelecionarColecionadoresMoedas();
+				if (colecionadoresMoedas.Item1 != CommandResult.Success)
+				{
+					throw new Exception();
+				}
+				List<Moeda> moedas = new List<Moeda>();
+				List<ColecionadoresMoedas> cms = colecionadoresMoedas.Item2.FindAll(cm => cm.IdColecionador == idColecionador);
+				foreach (ColecionadoresMoedas cm in cms)
+				{
+					Tuple<CommandResult, Moeda> resultMoeda = SelecionarMoeda(cm.IdMoeda);
+					if (resultMoeda.Item1 != CommandResult.Success) { throw new Exception(); }
+					moedas.Add(resultMoeda.Item2);
+				}
+				return new Tuple<CommandResult, List<Moeda>>(CommandResult.Success, moedas);
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<Moeda>>(CommandResult.Error, null);
+			}
+		}
+
+		public Tuple<CommandResult, List<Moeda>> SelecionarMoedasDaColecao(int idColecao)
+		{
+			try
+			{
+				Tuple<CommandResult, List<MoedasColecoes>> moedasColecoes = SelecionarMoedasColecoes();
+				if (moedasColecoes.Item1 != CommandResult.Success)
+				{
+					throw new Exception();
+				}
+				List<Moeda> moedas = new List<Moeda>();
+				List<MoedasColecoes> mcs = moedasColecoes.Item2.FindAll(cm => cm.IdColecao == idColecao);
+				foreach (MoedasColecoes mc in mcs)
+				{
+					Tuple<CommandResult, Moeda> resultMoeda = SelecionarMoeda(mc.IdMoeda);
+					if (resultMoeda.Item1 != CommandResult.Success) { throw new Exception(); }
+					moedas.Add(resultMoeda.Item2);
+				}
+				return new Tuple<CommandResult, List<Moeda>>(CommandResult.Success, moedas);
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<Moeda>>(CommandResult.Error, null);
+			}
+		}
+
+		public Tuple<CommandResult, List<MoedasColecoes>> SelecionarMoedasColecoes()
+		{
+			try
+			{
+				using (SQLiteCommand command = new SQLiteCommand($"SELECT * FROM JN_MoedasColecoes", GetConnection()))
+				using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+				{
+					DataTable dataTable = new DataTable();
+					adapter.Fill(dataTable);
+
+					List<MoedasColecoes> moedasColecoesList = new List<MoedasColecoes>();
+					foreach (DataRow row in dataTable.Rows)
+					{
+						int id = Convert.ToInt32(row["ID"]);
+						int idMoeda = Convert.ToInt32(row["IdMoeda"]);
+						int idColecao = Convert.ToInt32(row["IdColecao"]);
+
+						MoedasColecoes moedasColecoes = new MoedasColecoes(id, idColecao, idMoeda);
+						moedasColecoesList.Add(moedasColecoes);
+					}
+
+					return new Tuple<CommandResult, List<MoedasColecoes>>(CommandResult.Success, moedasColecoesList);
+				}
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<MoedasColecoes>>(CommandResult.Error, null);
+			}
+		}
+
 		public CommandResult RegistarMoeda(Moeda moeda)
 		{
 			try
@@ -249,6 +394,56 @@ namespace DAL
 			catch
 			{
 				return CommandResult.Error;
+			}
+		}
+
+		public Tuple<CommandResult, List<Evento>> SelecionarEventos()
+		{
+			try
+			{
+				using (SQLiteCommand command = new SQLiteCommand($"SELECT * FROM Eventos", GetConnection()))
+				using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+				{
+					DataTable dataTable = new DataTable();
+					adapter.Fill(dataTable);
+
+					List<Evento> eventos = new List<Evento>();
+					foreach (DataRow row in dataTable.Rows)
+					{
+						int id = Convert.ToInt32(row["ID"]);
+						string nome = Convert.ToString(row["Nome"]);
+						long dataInicio = Convert.ToInt32(row["DataInicio"]);
+						long dataFim = Convert.ToInt32(row["DataFim"]);
+						string local = Convert.ToString(row["Local"]);
+						string descricao = Convert.ToString(row["Descricao"]);
+
+						Evento evento = new Evento(id, nome, dataInicio, dataFim, local, descricao);
+						eventos.Add(evento);
+					}
+
+					return new Tuple<CommandResult, List<Evento>>(CommandResult.Success, eventos);
+				}
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<Evento>>(CommandResult.Error, null);
+			}
+		}
+
+		public Tuple<CommandResult, List<Colecao>> SelecionarColecoesDoEvento(int idEvento)
+		{
+			try
+			{
+				Tuple<CommandResult, List<Colecao>> resultColecoes = SelecionarColecoes();
+				if (resultColecoes.Item1 != CommandResult.Success)
+				{
+					throw new Exception();
+				}
+				return new Tuple<CommandResult, List<Colecao>>(CommandResult.Success, resultColecoes.Item2.FindAll(c => c.IdEvento == idEvento));
+			}
+			catch
+			{
+				return new Tuple<CommandResult, List<Colecao>>(CommandResult.Error, null);
 			}
 		}
 	}

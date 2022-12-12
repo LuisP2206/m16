@@ -1,6 +1,9 @@
 ﻿using System;
-using System.Data.SqlClient;
+using System.Collections.Generic;
 using System.Windows.Forms;
+
+using DAL;
+using DAL.Schemas;
 
 namespace M16_68
 {
@@ -21,61 +24,44 @@ namespace M16_68
 
 		private void Form_Consulta_Load(object sender, EventArgs e)
 		{
-			/*ObE Eventos;*/
-			string eventos;
-			try
+			Tuple<CommandResult, List<Evento>> resultEventos = Database.GetInstance().SelecionarEventos();
+			if (resultEventos.Item1 != CommandResult.Success)
 			{
-				/*Eventos = new ObE();*/
-				/*eventos = Eventos.Eventos(cbC_eventos.Text);*/
-				//eventos.Eventos(cbC_eventos.Text);
-				/*cbC_eventos.Text = eventos;*/
+				Close();
+				MessageBox.Show("Ocorreu um problema ao obter os eventos.");
 			}
-			catch (Exception ex)
+			Utils.Bind(cbC_eventos, resultEventos.Item1, nameof(Evento.Nome), nameof(Evento.Id));
+
+			Tuple<CommandResult, List<Colecao>> resultColecoes = Database.GetInstance().SelecionarColecoesDoColecionador(LoginInfo.CurrentUserId);
+			if (resultColecoes.Item1 != CommandResult.Success)
 			{
-				MessageBox.Show(ex.Message);
+				Close();
+				MessageBox.Show("Ocorreu um problema ao obter as coleções.");
 			}
+			Utils.Bind(cbC_colecao, resultColecoes.Item2, nameof(Colecao.Nome), nameof(Colecao.Id));
 
-
-			/*ConString.con.Open(); 
-            SqlCommand CE = new SqlCommand("Select Nome from Evento", ConString.con);
-            SqlDataAdapter da = new SqlDataAdapter(CE);
-            DataSet ds = new DataSet();
-            //string[] item = new string[1];
-            da.Fill(ds);
-            cbC_eventos.Text = ds.Tables[0].Columns["Nome"].ToString();
-
-            SqlCommand CM = new SqlCommand("Select * from Moeda", ConString.con);
-            SqlDataAdapter da1 = new SqlDataAdapter(CM);
-            DataSet ds1 = new DataSet();
-            //string[] item1 = new string[1];
-            da.Fill(ds1);
-            cbC_eventos.Text = ds.Tables[0].Columns["Nome"].ToString();
-
-            SqlCommand CC = new SqlCommand("Select * from Colecoes", ConString.con);
-            SqlDataAdapter da2 = new SqlDataAdapter(CC);
-            DataSet ds2 = new DataSet();
-            //string[] item2 = new string[1];
-            da.Fill(ds2);
-            cbC_eventos.Text = ds.Tables[0].Columns["Nome"].ToString();
-            ConString.con.Close();*/
+			Tuple<CommandResult, List<Moeda>> resultMoedas = Database.GetInstance().SelecionarMoedasDoColecionador(LoginInfo.CurrentUserId);
+			if (resultColecoes.Item1 != CommandResult.Success)
+			{
+				Close();
+				MessageBox.Show("Ocorreu um problema ao obter as moedas.");
+			}
+			Utils.Bind(cbC_moeda, resultMoedas.Item2, nameof(Moeda.Nome), nameof(Moeda.Id));
 		}
 
 		private void btnC_eventos_Click(object sender, EventArgs e)
 		{
-			Form_CEventos cev = new Form_CEventos();
-			cev.ShowDialog();
+			Form_CEventos.GetInstance().Show();
 		}
 
 		private void btnC_colecao_Click(object sender, EventArgs e)
 		{
-			Form_CColecao cc = new Form_CColecao();
-			cc.ShowDialog();
+			Form_CColecao.GetInstance().Show();
 		}
 
 		private void btnC_moedas_Click(object sender, EventArgs e)
 		{
-			Form_CMoedas cm = new Form_CMoedas();
-			cm.ShowDialog();
+			Form_CMoedas.GetInstance().Show();
 		}
 
 		private void logOffToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,16 +72,13 @@ namespace M16_68
 
 		private void suasMoedasToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-			Form_MinhaC mc = new Form_MinhaC();
+			Form_MinhaC.GetInstance().Show();
 			Hide();
-			mc.ShowDialog();
-			Show();
 		}
 
 		private void adicionarToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Form_Add ad = new Form_Add();
-			ad.ShowDialog();
+			Form_Add.GetInstance().Show();
 		}
 
 		private void suasMoedasToolStripMenuItem_Click(object sender, EventArgs e)
